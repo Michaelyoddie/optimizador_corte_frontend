@@ -1,0 +1,11 @@
+# Dependencias
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Archivos de sistema y editores
+.DS_Store
+.vscode/
+.idea/
+*.env
