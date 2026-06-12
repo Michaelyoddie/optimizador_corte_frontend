@@ -16,10 +16,10 @@ const GestorPiezas = ({ piezas, setPiezas }) => {
   };
 
   return (
-    <div className="p-6 bg-white rounded-xl shadow-lg border border-gray-200 mt-6">
+    <div className="p-6 bg-white rounded-xl shadow-lg border border-gray-200">
       <h2 className="text-xl font-bold text-gray-800 mb-4">Piezas a Cortar</h2>
       
-      <form onSubmit={agregar} className="grid grid-cols-2 gap-3 mb-6">
+      <form onSubmit={agregar} className="grid grid-cols-2 gap-3 mb-4">
         <div className="col-span-2">
           <label className="block text-sm text-gray-600">Nombre (ej. Puerta de mueble)</label>
           <input type="text" value={nueva.nombre} onChange={e => setNueva({...nueva, nombre: e.target.value})} className="mt-1 w-full p-2 border border-gray-300 rounded-md" required />
@@ -43,7 +43,8 @@ const GestorPiezas = ({ piezas, setPiezas }) => {
         </div>
       </form>
 
-      <div className="space-y-2 max-h-60 overflow-y-auto pr-2">
+      {/* ESTA ES LA CLAVE: Altura bloqueada a 200px con scroll interno */}
+      <div className="space-y-2 h-[200px] overflow-y-auto pr-2 border-t border-gray-100 pt-4">
         {piezas.length === 0 ? (
           <p className="text-sm text-gray-400 text-center py-4">No hay piezas ingresadas aún.</p>
         ) : (

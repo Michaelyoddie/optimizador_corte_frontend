@@ -25,25 +25,21 @@ function App() {
   };
 
   return (
-    <div className="h-screen bg-gray-100 p-4 md:p-8 overflow-hidden flex flex-col">
-      <h1 className="text-3xl font-bold text-center text-gray-900 mb-6 shrink-0">Optimizador de Taller</h1>
+    <div className="min-h-screen bg-gray-100 p-4 md:p-8">
+      <h1 className="text-3xl font-bold text-center text-gray-900 mb-6">Optimizador de Taller</h1>
       
-      {/* Contenedor principal trabado al alto de la pantalla */}
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1 min-h-0">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 relative">
         
-        {/* Columna Izquierda: Ingreso de Datos */}
-        <div className="lg:col-span-4 flex flex-col h-full bg-transparent">
-          {/* Zona con scroll para los formularios */}
-          <div className="flex-1 overflow-y-auto pr-2 space-y-6 pb-2">
-            <ConfiguracionPanel config={config} setConfig={setConfig} />
-            <GestorPiezas piezas={piezas} setPiezas={setPiezas} />
-          </div>
+        {/* Columna Izquierda */}
+        <div className="lg:col-span-4 flex flex-col gap-6 relative">
+          <ConfiguracionPanel config={config} setConfig={setConfig} />
+          <GestorPiezas piezas={piezas} setPiezas={setPiezas} />
           
-          {/* Botón anclado abajo */}
-          <div className="pt-4 shrink-0 border-t border-gray-300 mt-2">
+          {/* Botón Flotante/Pegajoso */}
+          <div className="sticky bottom-4 z-10 pt-2">
             <button 
               onClick={manejarCalculo}
-              className="w-full bg-blue-600 text-white font-bold text-lg py-4 rounded-xl shadow-lg hover:bg-blue-700 transition disabled:bg-gray-400"
+              className="w-full bg-blue-600 text-white font-bold text-lg py-4 rounded-xl shadow-[0_10px_25px_-5px_rgba(37,99,235,0.5)] hover:bg-blue-700 transition disabled:bg-gray-400 disabled:shadow-none"
               disabled={piezas.length === 0}
             >
               Calcular Cortes
@@ -51,8 +47,8 @@ function App() {
           </div>
         </div>
         
-        {/* Columna Derecha: Renderizado del Plano */}
-        <div className="lg:col-span-8 bg-white rounded-xl shadow-lg border border-gray-200 p-6 flex items-center justify-center h-full">
+        {/* Columna Derecha */}
+        <div className="lg:col-span-8 bg-white rounded-xl shadow-lg border border-gray-200 p-6 flex items-center justify-center min-h-[500px]">
           <VisualizadorCortes config={config} resultados={resultados} />
         </div>
 
