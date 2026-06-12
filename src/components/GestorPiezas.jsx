@@ -8,6 +8,7 @@ const GestorPiezas = ({ piezas, setPiezas }) => {
     if (!nueva.nombre || nueva.ancho <= 0 || nueva.alto <= 0 || nueva.cantidad <= 0) return;
     
     setPiezas([...piezas, { ...nueva, id: Date.now() }]);
+    // Vaciamos el formulario para que sea rápido agregar la siguiente
     setNueva({ nombre: '', ancho: '', alto: '', cantidad: 1 }); 
   };
 
@@ -19,6 +20,7 @@ const GestorPiezas = ({ piezas, setPiezas }) => {
     <div className="p-6 bg-white rounded-xl shadow-lg border border-gray-200">
       <h2 className="text-xl font-bold text-gray-800 mb-4">Piezas a Cortar</h2>
       
+      {/* Formulario de ingreso (se mantiene igual) */}
       <form onSubmit={agregar} className="grid grid-cols-2 gap-3 mb-4">
         <div className="col-span-2">
           <label className="block text-sm text-gray-600">Nombre (ej. Puerta de mueble)</label>
@@ -43,22 +45,47 @@ const GestorPiezas = ({ piezas, setPiezas }) => {
         </div>
       </form>
 
-      {/* ESTA ES LA CLAVE: Altura bloqueada a 200px con scroll interno */}
-      <div className="space-y-2 h-[200px] overflow-y-auto pr-2 border-t border-gray-100 pt-4">
+      {/* NUEVA VISTA: Tabla compacta en lugar de tarjetas */}
+      <div className="h-[200px] overflow-y-auto border border-gray-200 rounded-md">
         {piezas.length === 0 ? (
-          <p className="text-sm text-gray-400 text-center py-4">No hay piezas ingresadas aún.</p>
+          <div className="flex h-full items-center justify-center">
+            <p className="text-sm text-gray-400">No hay piezas ingresadas aún.</p>
+          </div>
         ) : (
-          piezas.map(p => (
-            <div key={p.id} className="flex justify-between items-center bg-gray-50 p-3 rounded-md border border-gray-200">
-              <div>
-                <p className="font-medium text-sm text-gray-800">{p.nombre} <span className="text-gray-500 font-normal">(x{p.cantidad})</span></p>
-                <p className="text-xs text-gray-500">{p.ancho} x {p.alto} cm</p>
-              </div>
-              <button onClick={() => eliminar(p.id)} className="text-red-500 hover:text-red-700 text-sm font-medium px-2">
-                Borrar
-              </button>
-            </div>
-          ))
+          <table className="w-full text-sm text-left">
+            <thead className="bg-gray-100 text-gray-600 sticky top-0 shadow-sm">
+              <tr>
+                <th className="px-3 py-2 font-semibold">Pieza</th>
+                <th className="px-3 py-2 font-semibold text-center">Medidas</th>
+                <th className="px-3 py-2 font-semibold text-center">Cant.</th>
+                <th className="px-3 py-2 font-semibold text-center"></th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {piezas.map(p => (
+                <tr key={p.id} className="hover:bg-blue-50 transition-colors">
+                  <td className="px-3 py-2 font-medium text-gray-800 truncate max-w-[120px]" title={p.nombre}>
+                    {p.nombre}
+                  </td>
+                  <td className="px-3 py-2 text-center text-gray-600 text-xs">
+                    {p.ancho} x {p.alto}
+                  </td>
+                  <td className="px-3 py-2 text-center font-semibold text-gray-700">
+                    {p.cantidad}
+                  </td>
+                  <td className="px-3 py-2 text-center">
+                    <button 
+                      onClick={() => eliminar(p.id)} 
+                      className="text-red-500 hover:text-red-700 hover:bg-red-100 rounded-full w-6 h-6 flex items-center justify-center font-bold transition"
+                      title="Borrar pieza"
+                    >
+                      ✕
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         )}
       </div>
     </div>

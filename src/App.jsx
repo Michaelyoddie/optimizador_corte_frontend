@@ -25,18 +25,24 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4 md:p-8">
-      <h1 className="text-3xl font-bold text-center text-gray-900 mb-6">Optimizador de Taller</h1>
+    <div className="h-screen bg-gray-100 p-4 md:p-6 flex flex-col overflow-hidden">
+      <h1 className="text-2xl font-bold text-center text-gray-900 mb-4 shrink-0">Optimizador de Taller</h1>
       
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 relative">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1 min-h-0">
         
-        {/* Columna Izquierda */}
-        <div className="lg:col-span-4 flex flex-col gap-6 relative">
-          <ConfiguracionPanel config={config} setConfig={setConfig} />
-          <GestorPiezas piezas={piezas} setPiezas={setPiezas} />
+        {/* Columna Izquierda: Ahora usa gap-4 y flex para distribuir el espacio sin scroll general */}
+        <div className="lg:col-span-4 flex flex-col h-full bg-transparent overflow-hidden gap-4">
           
-          {/* Botón Flotante/Pegajoso */}
-          <div className="sticky bottom-4 z-10 pt-2">
+          <div className="shrink-0">
+            <ConfiguracionPanel config={config} setConfig={setConfig} />
+          </div>
+          
+          {/* Este contenedor obliga al Gestor de Piezas a ocupar solo el espacio que sobra */}
+          <div className="flex-1 min-h-0">
+            <GestorPiezas piezas={piezas} setPiezas={setPiezas} />
+          </div>
+          
+          <div className="shrink-0 border-t border-gray-300 pt-2">
             <button 
               onClick={manejarCalculo}
               className="w-full bg-blue-600 text-white font-bold text-lg py-4 rounded-xl shadow-[0_10px_25px_-5px_rgba(37,99,235,0.5)] hover:bg-blue-700 transition disabled:bg-gray-400 disabled:shadow-none"
@@ -48,7 +54,7 @@ function App() {
         </div>
         
         {/* Columna Derecha */}
-        <div className="lg:col-span-8 bg-white rounded-xl shadow-lg border border-gray-200 p-6 flex items-center justify-center min-h-[500px]">
+        <div className="lg:col-span-8 bg-white rounded-xl shadow-lg border border-gray-200 p-4 flex flex-col h-full overflow-hidden">
           <VisualizadorCortes config={config} resultados={resultados} />
         </div>
 
