@@ -5,6 +5,7 @@ import VisualizadorCortes from './components/VisualizadorCortes';
 
 function App() {
   const [config, setConfig] = useState({ ancho: 122, alto: 244, kerf: 0.5 });
+  const [nombreProyecto, setNombreProyecto] = useState(""); // <-- NUEVO ESTADO PARA EL CLIENTE
   const [piezas, setPiezas] = useState([]);
   const [resultados, setResultados] = useState(null);
 
@@ -30,14 +31,17 @@ function App() {
       
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1 min-h-0">
         
-        {/* Columna Izquierda: Ahora usa gap-4 y flex para distribuir el espacio sin scroll general */}
         <div className="lg:col-span-4 flex flex-col h-full bg-transparent overflow-hidden gap-4">
-          
           <div className="shrink-0">
-            <ConfiguracionPanel config={config} setConfig={setConfig} />
+            {/* Pasamos el nombre al panel para que puedas escribirlo */}
+            <ConfiguracionPanel 
+              config={config} 
+              setConfig={setConfig} 
+              nombreProyecto={nombreProyecto} 
+              setNombreProyecto={setNombreProyecto} 
+            />
           </div>
           
-          {/* Este contenedor obliga al Gestor de Piezas a ocupar solo el espacio que sobra */}
           <div className="flex-1 min-h-0">
             <GestorPiezas piezas={piezas} setPiezas={setPiezas} />
           </div>
@@ -53,9 +57,13 @@ function App() {
           </div>
         </div>
         
-        {/* Columna Derecha */}
         <div className="lg:col-span-8 bg-white rounded-xl shadow-lg border border-gray-200 p-4 flex flex-col h-full overflow-hidden">
-          <VisualizadorCortes config={config} resultados={resultados} />
+          {/* Pasamos el nombre al visualizador para que lo ponga en el PDF */}
+          <VisualizadorCortes 
+            config={config} 
+            resultados={resultados} 
+            nombreProyecto={nombreProyecto} 
+          />
         </div>
 
       </div>
