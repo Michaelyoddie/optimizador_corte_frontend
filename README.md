@@ -1,60 +1,64 @@
-# 🪚 Optimizador de Taller (Wood Cutting Optimizer)
+# Optimizador de Taller — Wood Cutting Optimizer
 
-Una aplicación web diseñada para optimizar el corte de planchas de madera y melamina en talleres de carpintería y fabricación de muebles. Este sistema permite ingresar una lista de despiece y calcula la distribución matemática más eficiente para minimizar el desperdicio de material, generando una hoja de ruta exportable en PDF.
+Aplicación web diseñada para optimizar el corte de planchas de madera y melamina en talleres de carpintería y fabricación de muebles.
 
-## ✨ Características Principales
+El sistema permite ingresar una lista de despiece, calcular una distribución optimizada de las piezas y generar una hoja de ruta exportable en formato PDF, con el objetivo de reducir el desperdicio de material.
 
-* **Interfaz de Usuario Intuitiva:** Panel de control estático (sin scroll global) para un ingreso rápido de piezas.
-* **Motor Matemático:** Algoritmo en Python que evalúa y empaqueta las piezas considerando el grosor del disco de corte (Kerf).
-* **Visualización en Tiempo Real:** Renderizado SVG interactivo a escala real de cada plancha y sus cortes.
-* **Exportación Profesional:** Generación de PDF multipágina en alta resolución (vía `react-to-print`), incluyendo membrete con nombre del cliente, medidas, porcentaje de desperdicio y tablas de despiece por cada plancha.
+## Características principales
 
-## 🛠️ Tecnologías Utilizadas
+- **Interfaz intuitiva:** panel de control diseñado para facilitar el ingreso y la gestión de piezas.
+- **Motor de optimización:** algoritmo desarrollado en Python que distribuye las piezas considerando el grosor del disco de corte o *kerf*.
+- **Visualización interactiva:** representación SVG proporcional de cada plancha y de sus respectivos cortes.
+- **Gestión de múltiples planchas:** distribución automática de las piezas cuando se requiere utilizar más de una plancha.
+- **Exportación a PDF:** generación de un documento con información del cliente, medidas, porcentaje de desperdicio, diagramas de corte y tablas de despiece.
 
-**Frontend:**
-* React.js (Vite)
-* Tailwind CSS
-* HTML2Canvas / React-to-Print / jsPDF
+## Tecnologías utilizadas
 
-**Backend:**
-* Python
-* Flask & Flask-CORS
+### Frontend
 
-## ⚙️ Metodología de Desarrollo
+- React.js
+- Vite
+- Tailwind CSS
+- SVG
+- React-to-Print
+- HTML2Canvas
+- jsPDF
 
-Este proyecto fue construido utilizando prácticas modernas de **AI-Assisted Pair Programming** (Programación en pareja asistida por Inteligencia Artificial). 
-El uso de modelos de lenguaje avanzados permitió iterar rápidamente sobre el diseño de la interfaz y la lógica del algoritmo de empaquetado (Bin Packing). Esto permitió enfocar el esfuerzo de ingeniería humano en el diseño de la arquitectura del sistema, la experiencia del usuario final (UX/UI) y un riguroso aseguramiento de calidad (QA) para garantizar que el producto cumpla con las exigencias del mundo real en un entorno de taller.
+### Backend
 
-## 🚀 Cómo ejecutar el proyecto
+- Python
+- Flask
+- Flask-CORS
 
-Para correr este proyecto localmente, necesitas ejecutar ambos entornos (Frontend y Backend) en terminales separadas.
+## Metodología de desarrollo
 
-### 1. Iniciar el Backend (Python)
-Asegúrate de tener Python instalado y ejecuta:
+Este proyecto fue desarrollado utilizando prácticas de **programación en pareja asistida por inteligencia artificial** (*AI-Assisted Pair Programming*).
+
+El uso de modelos de lenguaje permitió acelerar la iteración sobre la interfaz, la arquitectura y la lógica del algoritmo de empaquetado o *bin packing*.
+
+El trabajo de ingeniería se concentró principalmente en:
+
+- El diseño de la arquitectura del sistema.
+- La experiencia de usuario y la interfaz.
+- La validación de la lógica matemática.
+- Las pruebas funcionales.
+- El aseguramiento de calidad del producto.
+
+## Requisitos previos
+
+Antes de ejecutar el proyecto, asegúrate de tener instalado:
+
+- Python 3
+- Node.js
+- npm
+
+## Ejecución del proyecto
+
+El frontend y el backend deben ejecutarse en terminales separadas.
+
+### 1. Iniciar el backend
+
+Ubícate en la carpeta correspondiente al backend e instala las dependencias:
+
 ```bash
-python app.py
-
-
-
-
-
-
-
-(El servidor de Flask se iniciará en http://127.0.0.1:5000)
-
-2. Iniciar el Frontend (React)
-Abre una nueva terminal en la carpeta del proyecto e instala las dependencias (solo la primera vez):
-
-npm install
-
-Luego, inicia el servidor de desarrollo:
-
-npm run dev
-
-(La aplicación estará disponible en http://localhost:5173)
-
-
-
-Autor y Control de Calidad
-Michael Alexander Belmar Cabrera
-Enfocado en Quality Assurance (QA) y la entrega de software funcional, asegurando que la lógica matemática se traduzca en una herramienta visualmente clara y directamente aplicable en la industria de la manufactura y diseño de muebles.
+pip install -r requirements.txt
