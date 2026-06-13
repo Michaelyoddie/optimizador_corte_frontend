@@ -62,10 +62,19 @@ Ubícate en la carpeta correspondiente al backend e instala las dependencias:
 
 ```bash
 pip install -r requirements.txt
+```
 
+Luego inicia el servidor:
 
+```bash
+python app.py
+```
 
+El servidor de Flask estará disponible normalmente en:
 
+```text
+http://127.0.0.1:5000
+```
 
 ### 2. Iniciar el frontend
 
@@ -86,3 +95,9 @@ La aplicación estará disponible normalmente en:
 ```text
 http://localhost:5173
 ```
+
+## Autor y aseguramiento de calidad
+
+**Michael Alexander Belmar Cabrera**
+
+Proyecto enfocado en el aseguramiento de calidad y en la entrega de software funcional, procurando que la lógica de optimización se traduzca en una herramienta visualmente clara y aplicable a la fabricación de muebles y al trabajo en talleres.
