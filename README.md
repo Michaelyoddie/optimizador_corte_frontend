@@ -33,3 +33,28 @@ Para correr este proyecto localmente, necesitas ejecutar ambos entornos (Fronten
 Asegúrate de tener Python instalado y ejecuta:
 ```bash
 python app.py
+
+
+
+
+
+
+
+(El servidor de Flask se iniciará en http://127.0.0.1:5000)
+
+2. Iniciar el Frontend (React)
+Abre una nueva terminal en la carpeta del proyecto e instala las dependencias (solo la primera vez):
+
+npm install
+
+Luego, inicia el servidor de desarrollo:
+
+npm run dev
+
+(La aplicación estará disponible en http://localhost:5173)
+
+
+
+Autor y Control de Calidad
+Michael Alexander Belmar Cabrera
+Enfocado en Quality Assurance (QA) y la entrega de software funcional, asegurando que la lógica matemática se traduzca en una herramienta visualmente clara y directamente aplicable en la industria de la manufactura y diseño de muebles.
