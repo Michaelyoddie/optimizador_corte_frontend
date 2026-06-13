@@ -62,3 +62,27 @@ Ubícate en la carpeta correspondiente al backend e instala las dependencias:
 
 ```bash
 pip install -r requirements.txt
+
+
+
+
+
+### 2. Iniciar el frontend
+
+Abre una nueva terminal, ubícate en la carpeta correspondiente al frontend e instala las dependencias:
+
+```bash
+npm install
+```
+
+Luego inicia el servidor de desarrollo:
+
+```bash
+npm run dev
+```
+
+La aplicación estará disponible normalmente en:
+
+```text
+http://localhost:5173
+```
